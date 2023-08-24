@@ -1,0 +1,20 @@
+/* Customize the styling of the admin components here */
+
+h2 {
+    text-align: center;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  button {
+    background-color: #6f7172;
+    color: #292626;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  

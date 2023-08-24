@@ -5,6 +5,8 @@ const deliveryVehicleSchema = new mongoose.Schema({
   vehicleType: { type: String, enum: ['bike', 'truck'] },
   city: String,
   activeOrdersCount: { type: Number, default: 0 },
-});
+},{
+    versionKey:false
+  });
 
 module.exports = mongoose.model('DeliveryVehicle', deliveryVehicleSchema);

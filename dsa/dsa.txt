@@ -1,0 +1,165 @@
+//////////////////////////easy//////////////////////////
+1.Am I Perfect?*****************************
+function classifyNumber(number) {
+  let sumOfFactors = 0;
+  for (let i = 1; i <= number / 2; i++) {
+    if (number % i === 0) {
+      sumOfFactors += i;
+    }
+  }
+  if (sumOfFactors === number) {
+    return "Perfect";
+  } else if (sumOfFactors > number) {
+    return "Abundant";
+  } else {
+    return "Deficient";
+  }
+}
+
+
+2.Shorten me!******************************************
+function shortenString(input) {
+  let result = '';
+  let count = 1;
+  for (let i = 1; i < input.length; i++) {
+    if (input[i] === input[i - 1]) {
+      count++;
+    } else {
+      result += (count === 1 ? '' : count) + input[i - 1];
+      count = 1;
+    }
+  }
+  result += (count === 1 ? '' : count) + input[input.length - 1];
+
+  return result;
+}
+function unshortenString(shortened) {
+  let result = '';
+  let count = '';
+
+  for (let char of shortened) {
+    if (isNaN(Number(char))) {
+      if (count === '') {
+        result += char;
+      } else {
+        result += char.repeat(Number(count));
+        count = '';
+      }
+    } else {
+      count += char;
+    }
+  }
+
+  return result;
+}
+
+3.How many trails to 1?*******************
+function calculateStepsToReachOne(number) {
+  let stepsCount = 0;
+  while (number !== 1) {
+    if (number % 2 === 0) {
+      number /= 2;
+    } else {
+      number = 3 * number + 1;
+    }
+    stepsCount++;
+  }
+  return stepsCount;
+}
+
+
+///////////////////MEDIUM////////////////////////////////////////////
+1.Greater than and less than in a matrix**************************
+function detectValidValues(matrix) {
+  const validValues = [];
+  for (let row = 0; row < matrix.length; row++) {
+    for (let col = 0; col < matrix[row].length; col++) {
+      const currentValue = matrix[row][col];
+      let isValid = true;
+      for (let c = 0; c < matrix[row].length; c++) {
+        if (currentValue < matrix[row][c]) {
+          isValid = false;
+          break;
+        }
+      }
+      for (let r = 0; r < matrix.length; r++) {
+        if (currentValue > matrix[r][col]) {
+          isValid = false;
+          break;
+        }
+      }
+
+      if (isValid) {
+        validValues.push(currentValue);
+      }
+    }
+  }
+
+  return validValues;
+}
+
+2.Hide that PIN!*****************
+function generateHiddenTexts(pin) {
+  const binRep = pin.toString(2);
+  const revBinRep = binRep.split('').reverse().join('');
+  const hiddenTexts = [];
+  let i = 0;
+  while (i < revBinRep.length) {
+    if (revBinRep.charAt(i) === '1') {
+      if (i === revBinRep.length - 1 || revBinRep.charAt(i + 1) !== '0') {
+        hiddenTexts.push('pop');
+      } else {
+        hiddenTexts.push('double rip');
+        i++;
+      }
+    } else if (revBinRep.charAt(i) === '0') {
+      if (i === revBinRep.length - 1 || revBinRep.charAt(i + 1) !== '0') {
+        hiddenTexts.push('hide your mints');
+      } else {
+        hiddenTexts.push('fall');
+        i++;
+      }
+    }
+    i++;
+  }
+  return hiddenTexts;
+}
+\\\\\\\\\\\\\\\\\\\\\\\\hard///////////////////////////////////
+1.Catch the fish********************
+function calculateEfficiency(K, L, M, N, total) {
+  const fishHit = new Array(total + 1).fill(false);
+  let hitCount = 0;
+  for (let i = 1; i <= total; i++) {
+    if (i % K === 0 || i % L === 0 || i % M === 0 || i % N === 0) {
+      fishHit[i] = true;
+      hitCount++;
+    }
+  }
+
+  return hitCount;
+}
+
+
+2.n-Chai******************************
+function generateChaiOrder(nCups, maxConsecutive, nGreen, nBlack) {
+  if (maxConsecutive >= nGreen) {
+    return Array(nCups).fill("Green").concat(Array(nCups).fill("Black"));
+  }
+  let order = [];
+  while (nCups > 0) {
+    if (nGreen > 0 && maxConsecutive > 0) {
+      order.push("Green");
+      nGreen--;
+      maxConsecutive--;
+    } else if (nBlack > 0) {
+      order.push("Black");
+      nBlack--;
+      maxConsecutive = Math.min(maxConsecutive, nGreen);
+    } else {
+      return [];
+    }
+    nCups--;
+  }
+
+  return order;
+}

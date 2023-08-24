@@ -1,0 +1,44 @@
+/* src/components/DeliveryVehicleList.css */
+
+.delivery-vehicle-list {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+  }
+  
+  h2 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .vehicle-item {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 3px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .registration-number {
+    font-weight: bold;
+  }
+  
+  .vehicle-type {
+    color: #007bff;
+  }
+  
+  .city {
+    color: #666;
+  }
+  

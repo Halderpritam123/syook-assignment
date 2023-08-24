@@ -1,0 +1,30 @@
+/* Customize the styling of the admin page here */
+
+.admin-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .admin-nav {
+    display: flex;
+  }
+  
+  .nav-btn {
+    background-color: transparent;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .nav-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .admin-form {
+    margin-top: 20px;
+  }
+  

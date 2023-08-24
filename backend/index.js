@@ -5,19 +5,22 @@ const itemRoutes = require('./routes/itemRoutes');
 const customerRoutes = require('./routes/customerRoutes');
 const deliveryVehicleRoutes = require('./routes/deliveryVehicleRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const adminRoutes = require('./routes/adminRoute');
 const authMiddleware = require('./middleware/auth');
 const db = require('./config/db');
 const cors = require('cors');
 require('dotenv').config();
+const morgan = require('morgan');
+app.use(morgan('combined'));
+
 app.use(express.json());
 app.use(cors());
-// Include middleware for routes that require authentication
-app.use('/orders', authMiddleware);
 
 app.use('/items', itemRoutes);
 app.use('/customers', customerRoutes);
 app.use('/delivery-vehicles', deliveryVehicleRoutes);
 app.use('/orders', orderRoutes);
+app.use('/admin', adminRoutes);
 app.get('/',(req,res)=>{
     res.send("<h1>Express Working</h1>")
 })
